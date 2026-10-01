@@ -43,8 +43,17 @@
             <option value="High">High</option>
           </select>
 
-          <label for="owner-gates">Owner-action gates</label>
+          <label for="owner-gates">Outstanding owner-action gates</label>
           <textarea id="owner-gates" name="owner-gates" rows="3" placeholder="Actions that require owner approval, one per line."></textarea>
+
+          <label class="confirmation" for="owner-review-confirmed">
+            <input id="owner-review-confirmed" type="checkbox">
+            Owner confirms this list includes all outstanding decisions
+          </label>
+          <label class="confirmation" for="high-risk-confirmed">
+            <input id="high-risk-confirmed" type="checkbox">
+            Owner confirms the high-risk build may proceed under this scope
+          </label>
 
           <label for="forbidden-actions">Forbidden actions</label>
           <textarea id="forbidden-actions" name="forbidden-actions" rows="3" placeholder="Actions that must not occur during this build, one per line."></textarea>
@@ -75,6 +84,14 @@
           </div>
 
           <section class="summary-strip" aria-label="Generated report summary">
+            <div>
+              <span>Phase readiness</span>
+              <strong id="phase-readiness-output">Not generated</strong>
+            </div>
+            <div>
+              <span>Owner-decision readiness</span>
+              <strong id="owner-readiness-output">Not generated</strong>
+            </div>
             <div>
               <span>Open owner decisions</span>
               <strong id="decision-count">0</strong>

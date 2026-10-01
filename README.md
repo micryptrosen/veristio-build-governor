@@ -1,6 +1,16 @@
 # Build Governor
 
-A dependency-free local browser prototype for Build With AI Hackathon #2.
+A dependency-free local Veristio prototype, preserved beyond its original hackathon effort.
+
+## Accepted Usefulness Update - 2026-10-01
+
+Phase readiness, owner-decision readiness and overall closeout readiness are separate. Missing setup, outstanding gates, unreviewed decision list or missing high-risk confirmation prevents ready closeout. Blocked precedes Hold, then owner review; scope edits clear confirmations.
+
+The product owner accepted this bounded repair in the governed product home. It is now prepared in this local publication mirror; this preparation does not claim the new commit has been pushed. Owner acceptance is not production or customer validation.
+
+Confirmations and phases are user declarations, not authenticated approvals or verified evidence. This standalone product neither operates the MPM controller nor executes checks or grants operational permission.
+
+The demo below records the older prototype, before this repair. No video was rerecorded or uploaded for this update, and playback was not freshly checked. Devpost submission was abandoned due to owner-assessed qualification risk; no submission occurred.
 
 ## Features
 

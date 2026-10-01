@@ -1,5 +1,10 @@
 # Source Custody
 
+## Public Mirror Update Boundary - 2026-10-01
+
+Confirmations and phases are user declarations, not authenticated approvals or verified evidence. This standalone product neither operates the MPM controller nor executes checks or grants operational permission.
+This publication mirror contains independently scoped app files and public documentation, not private product memory, source-reference content or source-repository history. The MIT exclusions and existing custody rules below remain in force.
+
 ## Lane Verdict
 
 Entry 03 is a new Build Governor product lane, separate from the MPM controller.

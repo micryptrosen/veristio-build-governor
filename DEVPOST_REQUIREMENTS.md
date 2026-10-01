@@ -1,6 +1,12 @@
 # Submission Readiness
 
-Submission status: HELD / NOT PERFORMED. This export remains local until separately approved public repository creation and push.
+## Current Non-hackathon Status - 2026-10-01
+
+The owner abandoned the submission route because required original Skill Pack workflow evidence was not established. This is an owner-assessed qualification risk, not an organizer rejection. No Skill Pack completion is claimed.
+The local publication mirror now includes the accepted usefulness repair: Phase readiness, owner-decision readiness and overall closeout readiness are separate. Missing setup, outstanding gates, unreviewed decision list or missing high-risk confirmation prevents ready closeout. Blocked precedes Hold, then owner review; scope edits clear confirmations.
+Recorded requirements and remaining-work sections below are historical submission context, not current instructions to revive or submit the project. Existing video shows the older prototype. Any future public push or other external action requires separate approval; Devpost stays abandoned/held/not performed.
+
+Submission status: ABANDONED_DUE_TO_QUALIFICATION_RISK / HELD / NOT PERFORMED. Existing public repository and owner-published demo are preserved; no Devpost submission or new external action is authorized.
 
 ## Recorded Requirements
 

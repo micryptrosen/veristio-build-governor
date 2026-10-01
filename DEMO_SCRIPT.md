@@ -1,23 +1,21 @@
 # Demo Script - Build Governor
 
-Target length: under 3 minutes.
+Suggested future walkthrough: under three minutes. Existing recorded demo: https://youtu.be/4rY9jDAVvGc.
+The recorded video predates this usefulness repair; this script is not evidence of a new recording or upload.
 
-## 0:00-0:20 - Open
+## 0:00-0:25 - Open
 
-Show `index.html` running locally. State that Build Governor is a local prototype for planning and closing out AI-assisted build work with clear gates.
+Run the static app over localhost. Introduce it as a preserved Veristio prototype; no AI service, account or input storage is used.
 
-## 0:20-0:55 - Load Sample
+## 0:25-1:55 - Accepted Repair
 
-Click **Load sample**. Point out the project name, repo/path, build goal, risk level, owner-action gates, forbidden actions, evidence requirements, and verification checks.
+Set all phases Passed with complete project details but no owner review: show Owner review needed. Confirm the decision list, then test High risk without and with its confirmation. An outstanding gate still prevents ready closeout. Show Hold and Blocked precedence.
 
-## 0:55-1:35 - Phase Gates
+## 1:55-2:35 - Copy and Reset
 
-Show the Discover, Plan, Implement, Verify, Commit, and Closeout phase gates. Change one phase to **Hold** or **Blocked** and generate the report to show how readiness changes.
+Show the copy control and clipboard-denied/unavailable selection fallback. Confirm the copied text is the intended output, then reset the workspace.
 
-## 1:35-2:20 - Report
+## 2:35-2:55 - Limits
 
-Review the generated sections: project summary, phase gate status, owner-decision list, forbidden actions, required evidence, verification checks, and closeout checklist.
-
-## 2:20-2:50 - Copy and Close
-
-Use **Copy report** or show the fallback selection behavior. Close by noting that the app is local-only, uses synthetic examples, and does not publish, deploy, or upload anything.
+Confirmations and phases are user declarations, not authenticated approvals or verified evidence. This standalone product neither operates the MPM controller nor executes checks or grants operational permission.
+No new publication or Devpost submission is performed by following this local walkthrough.

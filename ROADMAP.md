@@ -1,25 +1,18 @@
 # Roadmap
 
-## Current Phase
+## Current Product Update - 2026-10-01
 
-First local static prototype.
+Preserved non-hackathon Veristio prototype. The owner accepted this bounded repair in the governed product home; it is now prepared locally in the publication mirror:
 
-## Next Lawful Build Operation
+Phase readiness, owner-decision readiness and overall closeout readiness are separate. Missing setup, outstanding gates, unreviewed decision list or missing high-risk confirmation prevents ready closeout. Blocked precedes Hold, then owner review; scope edits clear confirmations.
 
-Run local browser QA/readiness review, repair any UX issues found, and document the results before any approved release.
+This local commit is not a claim of public push, new demo recording, customer validation or production readiness. Existing demo and MIT license remain preserved. Devpost submission route is abandoned/held/not performed due to owner-assessed qualification risk.
 
-## Prototype Improvements
+## Next Actions
 
-- Add import/export of a JSON build plan.
-- Add optional saved local templates for common workflows.
-- Add richer status summaries for high-risk builds.
-- Add print-friendly report styling.
-- Add manual browser QA screenshots for desktop and mobile widths.
-- Add accessibility review for keyboard navigation and screen reader labels.
+Review the local mirror diff and its verification evidence before any separately approved push. Subsequent product changes require a new bounded scope and owner approval; no speculative features are implemented or authorized here.
 
-## Later Gates
+## Boundaries
 
-- Confirm minimal product scope.
-- Run local checks after each tranche.
-- Recheck Devpost rules before external action.
-- Request owner approval before any push, publication, demo upload, or submission.
+Confirmations and phases are user declarations, not authenticated approvals or verified evidence. This standalone product neither operates the MPM controller nor executes checks or grants operational permission.
+No backend, persistence, accounts, analytics, external AI integration, automatic publication or deployment is introduced. Keep private governance/evidence and source-reference content out of this mirror.

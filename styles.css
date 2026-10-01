@@ -149,6 +149,20 @@ textarea {
   resize: vertical;
 }
 
+.confirmation {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  font-weight: 400;
+}
+
+.confirmation input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 3px;
+}
+
 input:focus,
 select:focus,
 textarea:focus,

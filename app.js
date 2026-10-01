@@ -60,6 +60,10 @@ const statusOutput = document.querySelector("#status-output");
 const decisionCount = document.querySelector("#decision-count");
 const holdCount = document.querySelector("#hold-count");
 const readinessOutput = document.querySelector("#readiness-output");
+const phaseReadinessOutput = document.querySelector("#phase-readiness-output");
+const ownerReadinessOutput = document.querySelector("#owner-readiness-output");
+const ownerReviewConfirmed = document.querySelector("#owner-review-confirmed");
+const highRiskConfirmed = document.querySelector("#high-risk-confirmed");
 
 function splitLines(value) {
   return value
@@ -129,7 +133,9 @@ function getFormData() {
     forbiddenActions: splitLines(fields.forbiddenActions.value),
     requiredEvidence: splitLines(fields.requiredEvidence.value),
     requiredChecks: splitLines(fields.requiredChecks.value),
-    gateSelections: getGateSelections()
+    gateSelections: getGateSelections(),
+    ownerReviewConfirmed: ownerReviewConfirmed.checked,
+    highRiskConfirmed: highRiskConfirmed.checked
   };
 }
 
@@ -155,13 +161,19 @@ function getReadiness(gates, ownerGates) {
 
 function buildOwnerDecisionList(data) {
   const decisions = [...data.ownerGates];
+  if (!data.projectName || !data.repoPath || !data.buildGoal) {
+    decisions.push("Supply project name, repo/path and build goal before closeout");
+  }
+  if (!data.ownerReviewConfirmed) {
+    decisions.push("Owner must confirm the outstanding decision list is complete");
+  }
   const heldGates = data.gateSelections.filter((gate) => gate.status === "Hold" || gate.status === "Blocked");
 
   heldGates.forEach((gate) => {
     decisions.push(`Resolve ${gate.phase} phase marked ${gate.status}`);
   });
 
-  if (data.riskLevel === "High") {
+  if (data.riskLevel === "High" && !data.highRiskConfirmed) {
     decisions.push("Confirm high-risk build may proceed under current scope");
   }
 
@@ -172,7 +184,9 @@ function generateReport() {
   const data = getFormData();
   const ownerDecisions = buildOwnerDecisionList(data);
   const heldOrBlocked = data.gateSelections.filter((gate) => gate.status === "Hold" || gate.status === "Blocked");
-  const readiness = getReadiness(data.gateSelections, data.ownerGates);
+  const readiness = getReadiness(data.gateSelections, ownerDecisions);
+  const phaseReadiness = getReadiness(data.gateSelections, []);
+  const ownerReadiness = ownerDecisions.length ? "Owner review needed" : "No outstanding decisions declared";
 
   const projectName = data.projectName || "Untitled governed build";
   const repoPath = data.repoPath || "Repo/path not supplied";
@@ -216,9 +230,14 @@ function generateReport() {
     "- Name remaining blockers and the next safe action.",
     "",
     "Closeout status:",
+    `- Phase readiness: ${phaseReadiness.label}`,
+    `- Owner-decision readiness: ${ownerReadiness}`,
     `- Readiness: ${readiness.label}`,
     `- Hold or blocked phases: ${heldOrBlocked.length ? heldOrBlocked.map((gate) => `${gate.phase} (${gate.status})`).join(", ") : "none"}`,
-    `- Open owner decisions: ${ownerDecisions.length}`
+    `- Open owner decisions: ${ownerDecisions.length}`,
+    `- Owner decision list reviewed: ${data.ownerReviewConfirmed ? "Confirmed by user" : "Not confirmed"}`,
+    `- High-risk scope confirmation: ${data.riskLevel !== "High" ? "Not applicable" : data.highRiskConfirmed ? "Confirmed by user" : "Missing"}`,
+    "- Readiness uses user declarations, not verified approvals or evidence. This standalone tool grants no permission."
   ].join("\n");
 
   reportOutput.textContent = report;
@@ -226,10 +245,14 @@ function generateReport() {
   holdCount.textContent = String(heldOrBlocked.length);
   readinessOutput.textContent = readiness.label;
   readinessOutput.className = readiness.className;
+  phaseReadinessOutput.textContent = phaseReadiness.label;
+  ownerReadinessOutput.textContent = ownerReadiness;
   statusOutput.textContent = "Report generated";
 }
 
 function loadSample() {
+  ownerReviewConfirmed.checked = false;
+  highRiskConfirmed.checked = false;
   fields.projectName.value = sample.projectName;
   fields.repoPath.value = sample.repoPath;
   fields.buildGoal.value = sample.buildGoal;
@@ -244,6 +267,8 @@ function loadSample() {
 }
 
 function resetForm() {
+  ownerReviewConfirmed.checked = false;
+  highRiskConfirmed.checked = false;
   Object.values(fields).forEach((field) => {
     if (field.tagName === "SELECT") {
       field.value = "Moderate";
@@ -258,6 +283,8 @@ function resetForm() {
   holdCount.textContent = "0";
   readinessOutput.textContent = "Not generated";
   readinessOutput.className = "";
+  phaseReadinessOutput.textContent = "Not generated";
+  ownerReadinessOutput.textContent = "Not generated";
   statusOutput.textContent = "Ready";
 }
 
@@ -299,6 +326,17 @@ async function copyReport() {
 }
 
 renderGateControls();
+// Scope changes invalidate declarations; refresh a generated report to avoid stale readiness.
+Object.values(fields).forEach((field) => field.addEventListener("input", () => {
+  ownerReviewConfirmed.checked = false;
+  highRiskConfirmed.checked = false;
+  if (!reportOutput.textContent.startsWith("No report yet")) generateReport();
+}));
+[ownerReviewConfirmed, highRiskConfirmed, ...phases.map((phase) =>
+  document.querySelector(`[data-phase="${phase}"]`))].forEach((control) =>
+  control.addEventListener("change", () => {
+    if (!reportOutput.textContent.startsWith("No report yet")) generateReport();
+  }));
 generateButton.addEventListener("click", generateReport);
 sampleButton.addEventListener("click", loadSample);
 resetButton.addEventListener("click", resetForm);
