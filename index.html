@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Build Governor</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Local build governance prototype</p>
+          <h1>Build Governor</h1>
+          <p class="intro">Define the goal, gates, evidence, checks, and closeout status for an AI-assisted build before the work drifts out of bounds.</p>
+        </div>
+        <div class="status-card" aria-live="polite">
+          <span>Status</span>
+          <strong id="status-output">Ready</strong>
+        </div>
+      </header>
+
+      <section class="workspace" aria-label="Build governor workspace">
+        <form class="panel setup-panel" id="build-form">
+          <div class="section-heading">
+            <h2>Build Setup</h2>
+            <p>Use general project details and synthetic examples. Keep private campaign records out of the product report.</p>
+          </div>
+
+          <label for="project-name">Project name</label>
+          <input id="project-name" name="project-name" type="text" placeholder="Example: Local docs cleanup assistant">
+
+          <label for="repo-path">Repo or path</label>
+          <input id="repo-path" name="repo-path" type="text" placeholder="D:\Projects\example-build">
+
+          <label for="build-goal">Build goal</label>
+          <textarea id="build-goal" name="build-goal" rows="4" placeholder="Describe what the build should accomplish."></textarea>
+
+          <label for="risk-level">Risk level</label>
+          <select id="risk-level" name="risk-level">
+            <option value="Low">Low</option>
+            <option value="Moderate" selected>Moderate</option>
+            <option value="High">High</option>
+          </select>
+
+          <label for="owner-gates">Owner-action gates</label>
+          <textarea id="owner-gates" name="owner-gates" rows="3" placeholder="Actions that require owner approval, one per line."></textarea>
+
+          <label for="forbidden-actions">Forbidden actions</label>
+          <textarea id="forbidden-actions" name="forbidden-actions" rows="3" placeholder="Actions that must not occur during this build, one per line."></textarea>
+
+          <label for="required-evidence">Required evidence</label>
+          <textarea id="required-evidence" name="required-evidence" rows="3" placeholder="Evidence to capture before closeout, one per line."></textarea>
+
+          <label for="required-checks">Required checks</label>
+          <textarea id="required-checks" name="required-checks" rows="3" placeholder="Verification checks to run, one per line."></textarea>
+
+          <div class="button-row">
+            <button type="button" id="sample-button">Load sample</button>
+            <button type="button" id="reset-button" class="secondary">Reset</button>
+          </div>
+        </form>
+
+        <section class="panel gates-panel" aria-labelledby="phase-heading">
+          <div class="section-heading">
+            <h2 id="phase-heading">Phase Gates</h2>
+            <p>Set each phase to the latest honest state.</p>
+          </div>
+
+          <div class="gate-grid" id="gate-grid"></div>
+
+          <div class="button-row report-actions">
+            <button type="button" id="generate-button">Generate report</button>
+            <button type="button" id="copy-button" class="secondary">Copy report</button>
+          </div>
+
+          <section class="summary-strip" aria-label="Generated report summary">
+            <div>
+              <span>Open owner decisions</span>
+              <strong id="decision-count">0</strong>
+            </div>
+            <div>
+              <span>Hold/blocked phases</span>
+              <strong id="hold-count">0</strong>
+            </div>
+            <div>
+              <span>Closeout readiness</span>
+              <strong id="readiness-output">Not generated</strong>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <section class="report-section" aria-labelledby="report-heading">
+        <div class="section-heading">
+          <h2 id="report-heading">Governed Build Report</h2>
+          <p>Copy-friendly output for local notes, review packets, or a closeout handoff.</p>
+        </div>
+        <pre id="report-output" tabindex="0">No report yet. Fill the setup form or load the sample, then generate a report.</pre>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
