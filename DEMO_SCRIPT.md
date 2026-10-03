@@ -1,5 +1,11 @@
 # Demo Script - Build Governor
 
+## Current Maintenance Walkthrough - 2026-10-03
+
+Future walkthrough, under three minutes: Generate with blank then supplied evidence/check requirements. Compare expectation labels in screen and copied report. Set phases Passed while withholding owner/high-risk confirmations; confirm readiness remains gated. Confirm supplied declarations do not claim checks ran, then reset.
+
+This replaces the older walkthrough emphasis below, not the recorded video's history. Existing demo predates this maintenance slice; no new video, upload or playback check is claimed. Describe narrow observable behavior, not customer/production readiness or guaranteed results.
+
 Suggested future walkthrough: under three minutes. Existing recorded demo: https://youtu.be/4rY9jDAVvGc.
 The recorded video predates this usefulness repair; this script is not evidence of a new recording or upload.
 

@@ -62,6 +62,7 @@ const holdCount = document.querySelector("#hold-count");
 const readinessOutput = document.querySelector("#readiness-output");
 const phaseReadinessOutput = document.querySelector("#phase-readiness-output");
 const ownerReadinessOutput = document.querySelector("#owner-readiness-output");
+const expectationOutput = document.querySelector("#expectation-output");
 const ownerReviewConfirmed = document.querySelector("#owner-review-confirmed");
 const highRiskConfirmed = document.querySelector("#high-risk-confirmed");
 
@@ -195,6 +196,11 @@ function generateReport() {
   const checks = listOrDefault(data.requiredChecks, "Run a local verification check appropriate to the project.");
   const forbidden = listOrDefault(data.forbiddenActions, "No forbidden actions supplied.");
   const decisions = listOrDefault(ownerDecisions, "No owner decisions currently listed.");
+  const expectationReview = [
+    `Evidence requirements: ${data.requiredEvidence.length ? "User-supplied expectations" : "Not supplied; app-default expectations"}.`,
+    `Check requirements: ${data.requiredChecks.length ? "User-supplied expectations" : "Not supplied; app-default expectations"}.`,
+    "Listed requirements and Passed phases do not establish that checks ran or evidence was verified. Readiness is user-declared, not tool-verified."
+  ];
 
   const report = [
     "Build Governor report",
@@ -222,6 +228,9 @@ function generateReport() {
     "Required verification checks:",
     ...bulletList(checks),
     "",
+    "Expectation sources and verification limits:",
+    ...bulletList(expectationReview),
+    "",
     "Closeout checklist:",
     "- Confirm every phase gate has an honest final status.",
     "- Record verification checks and any checks that could not run.",
@@ -230,9 +239,9 @@ function generateReport() {
     "- Name remaining blockers and the next safe action.",
     "",
     "Closeout status:",
-    `- Phase readiness: ${phaseReadiness.label}`,
+    `- Declared phase readiness: ${phaseReadiness.label}`,
     `- Owner-decision readiness: ${ownerReadiness}`,
-    `- Readiness: ${readiness.label}`,
+    `- Declared closeout readiness: ${readiness.label}`,
     `- Hold or blocked phases: ${heldOrBlocked.length ? heldOrBlocked.map((gate) => `${gate.phase} (${gate.status})`).join(", ") : "none"}`,
     `- Open owner decisions: ${ownerDecisions.length}`,
     `- Owner decision list reviewed: ${data.ownerReviewConfirmed ? "Confirmed by user" : "Not confirmed"}`,
@@ -247,6 +256,7 @@ function generateReport() {
   readinessOutput.className = readiness.className;
   phaseReadinessOutput.textContent = phaseReadiness.label;
   ownerReadinessOutput.textContent = ownerReadiness;
+  expectationOutput.textContent = expectationReview.join(" ");
   statusOutput.textContent = "Report generated";
 }
 
@@ -285,6 +295,7 @@ function resetForm() {
   readinessOutput.className = "";
   phaseReadinessOutput.textContent = "Not generated";
   ownerReadinessOutput.textContent = "Not generated";
+  expectationOutput.textContent = "No generated expectation review yet.";
   statusOutput.textContent = "Ready";
 }
 
