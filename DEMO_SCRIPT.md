@@ -1,5 +1,11 @@
 # Demo Script - Build Governor
 
+## Product Value Walkthrough - 2026-10-03
+
+Under three minutes: load sample, inspect owner decisions and checklist, export and open the text download. Change scope and export again, showing unresolved owner/high-risk decisions stay held. Demonstrate copy fallback if export APIs are unavailable.
+
+This is a future local walkthrough, not evidence of a new recording. Existing public demo predates these additions; no new playback or upload is claimed. Earlier walkthroughs below are historical. No Devpost submission.
+
 ## Current Maintenance Walkthrough - 2026-10-03
 
 Future walkthrough, under three minutes: Generate with blank then supplied evidence/check requirements. Compare expectation labels in screen and copied report. Set phases Passed while withholding owner/high-risk confirmations; confirm readiness remains gated. Confirm supplied declarations do not claim checks ran, then reset.

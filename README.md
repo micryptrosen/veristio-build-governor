@@ -1,5 +1,12 @@
 # Build Governor
 
+## Current Product Value - 2026-10-03
+
+Export report (.txt) regenerates the report from current form declarations and requests a local UTF-8 download named build-governor-decision-report.txt. It includes owner decisions, closeout checklist, evidence/check expectation sources and user-declared readiness. Export does not run verification or authorize actions. Owner/high-risk safeguards remain; unavailable download APIs direct you to Copy report. A requested download is not a guaranteed disk save.
+
+This bounded addition is implemented and owner-accepted in the governed product home. This independent-history mirror carries only public-safe app/docs. Owner acceptance is not customer or production validation. Earlier dated preparation/update statements below are historical; they do not certify current publication status.
+Static local operation, no network dependency or input storage, and MIT license preserved. Existing demo predates these additions; no new recording/playback claim. The hackathon submission route remains abandoned; this is non-hackathon product continuation.
+
 ## Accepted Maintenance Prepared Locally - 2026-10-03
 
 Evidence/check requirements are labelled as user-supplied expectations or app-default expectations. Listed requirements and Passed phases do not establish completed verification. Phase/closeout readiness is user-declared, not tool-verified; existing owner/high-risk safeguards remain.

@@ -352,3 +352,20 @@ generateButton.addEventListener("click", generateReport);
 sampleButton.addEventListener("click", loadSample);
 resetButton.addEventListener("click", resetForm);
 copyButton.addEventListener("click", copyReport);
+document.querySelector("#export-button").addEventListener("click", () => {
+  generateReport();
+  let url;
+  try {
+    const blob = new Blob([reportOutput.textContent], { type: "text/plain;charset=utf-8" });
+    url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "build-governor-decision-report.txt";
+    link.click();
+    statusOutput.textContent = "Report download requested";
+  } catch {
+    statusOutput.textContent = "Export unavailable; copy report instead";
+  } finally {
+    if (url) window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+});
