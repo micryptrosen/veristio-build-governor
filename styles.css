@@ -263,6 +263,11 @@ button.secondary:hover {
   margin-top: 18px;
 }
 
+#backlog-output {
+  min-height: 0;
+  max-height: none;
+}
+
 pre {
   min-height: 260px;
   max-height: 620px;

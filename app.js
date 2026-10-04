@@ -56,6 +56,7 @@ const sampleButton = document.querySelector("#sample-button");
 const resetButton = document.querySelector("#reset-button");
 const copyButton = document.querySelector("#copy-button");
 const reportOutput = document.querySelector("#report-output");
+const backlogOutput = document.querySelector("#backlog-output");
 const statusOutput = document.querySelector("#status-output");
 const decisionCount = document.querySelector("#decision-count");
 const holdCount = document.querySelector("#hold-count");
@@ -218,6 +219,13 @@ function generateReport() {
     "Listed requirements and Passed phases do not establish that checks ran or evidence was verified. Readiness is user-declared, not tool-verified."
   ];
 
+  // Declared backlog is a projection, not verification or owner-decision resolution.
+  const backlog = data.gateSelections.filter((gate) => gate.status !== "Passed")
+    .map((gate) => `${gate.phase}: ${gate.status}`);
+  if (!backlog.length) backlog.push("No unfinished phases declared; completion is not tool-verified.");
+  backlogOutput.textContent = backlog.join("\n");
+  // End declared backlog projection.
+
   const report = [
     "Build Governor report",
     "",
@@ -234,6 +242,9 @@ function generateReport() {
     "",
     "Owner-decision list:",
     ...bulletList(decisions),
+    "",
+    "Declared phase work remaining (not completed verification):",
+    ...bulletList(backlog),
     "",
     "Forbidden actions:",
     ...bulletList(forbidden),
@@ -319,6 +330,7 @@ function loadSample() {
 }
 
 function resetForm() {
+  backlogOutput.textContent = "No declared backlog generated yet.";
   reportSnapshot = null;
   ownerReviewConfirmed.checked = false;
   highRiskConfirmed.checked = false;
