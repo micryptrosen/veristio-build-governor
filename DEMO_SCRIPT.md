@@ -1,5 +1,11 @@
 # Demo Script - Build Governor
 
+## Post-Pages Accepted Product Updates - 2026-10-04
+
+Name two projects, generate/export each and compare filenames and report content. Try a blank or unsafe name, confirm the fallback/sanitized filename, and check owner/high-risk safeguards and copy/reset.
+
+This is a current walkthrough, not evidence that the existing demo video was re-recorded.
+
 ## Accepted Maintenance Prepared Locally - 2026-10-04
 
 Generate a decision report, edit a field or confirmation and attempt copy before regenerating. Regenerate and copy or use selection fallback; export the current .txt checklist and reset. Explain that readiness declarations are not completed verification and clipboard writes already initiated cannot be recalled.

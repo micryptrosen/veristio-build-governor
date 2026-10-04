@@ -1,5 +1,11 @@
 # Roadmap
 
+## Post-Pages Accepted Product Updates - 2026-10-04
+
+Report filenames now include a sanitized project label: build-governor-<project-slug>-decision-report.txt. Labels use lowercase ASCII alphanumeric/hyphens capped at 60 characters; blank/unusable/reserved labels use build-governor-decision-report.txt. Labels can collide and are visible when shared. Export still regenerates current report content; readiness remains user-declared, not completed verification.
+
+Next: collect concrete use feedback and separately scope improvements. No automatic product-to-mirror synchronization; further changes require review.
+
 ## Accepted Maintenance Prepared Locally - 2026-10-04
 
 Copy requires a report matching the current input and decision/checklist state. Obsolete or overlapping asynchronous clipboard completion cannot claim current success or select a newer report. An initiated OS clipboard write cannot be recalled. Readiness remains user-declared; owner/high-risk safeguards, evidence expectations and current .txt export are unchanged.

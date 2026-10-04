@@ -382,6 +382,16 @@ generateButton.addEventListener("click", generateReport);
 sampleButton.addEventListener("click", loadSample);
 resetButton.addEventListener("click", resetForm);
 copyButton.addEventListener("click", copyReport);
+function exportFilename(label) {
+  const slug = label.trim().toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")
+    .slice(0, 60).replace(/-+$/g, "");
+  const reserved = /^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:-|$)/.test(slug);
+  return slug && !reserved
+    ? `build-governor-${slug}-decision-report.txt`
+    : "build-governor-decision-report.txt";
+}
+
 document.querySelector("#export-button").addEventListener("click", () => {
   generateReport();
   let url;
@@ -390,7 +400,7 @@ document.querySelector("#export-button").addEventListener("click", () => {
     url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "build-governor-decision-report.txt";
+    link.download = exportFilename(fields.projectName.value);
     link.click();
     statusOutput.textContent = "Report download requested";
   } catch {
