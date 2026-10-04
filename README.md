@@ -1,5 +1,11 @@
 # Build Governor
 
+## Current Public-safe Snapshot - 2026-10-04
+
+Runtime is unchanged in this documentation update. Evidence/check requirements and readiness are user declarations, not completed verification. Owner/high-risk safeguards, project-labelled report filenames and current copy/export guards remain intact.
+Earlier dated local-preparation/not-yet-pushed statements below describe historical checkpoints, not the current snapshot or today's publication result. Owner acceptance is not independent customer validation.
+Static local-only operation and MIT license preserved. Existing demo URLs and historical Skill Pack documentation are unchanged; physical-phone review remains deferred.
+
 ## Post-Pages Accepted Product Updates - 2026-10-04
 
 Report filenames now include a sanitized project label: build-governor-<project-slug>-decision-report.txt. Labels use lowercase ASCII alphanumeric/hyphens capped at 60 characters; blank/unusable/reserved labels use build-governor-decision-report.txt. Labels can collide and are visible when shared. Export still regenerates current report content; readiness remains user-declared, not completed verification.

@@ -1,5 +1,12 @@
 # Demo Script - Build Governor
 
+## Current Public-safe Snapshot - 2026-10-04
+
+Generate a project-labelled decision report, inspect outstanding owner decisions and evidence expectations, export current .txt, edit/regenerate, copy and reset. Keep readiness declarations distinct from completed verification.
+This is a current walkthrough, not a claim that the existing public video was re-recorded.
+Earlier dated local-preparation/not-yet-pushed statements below describe historical checkpoints, not the current snapshot or today's publication result. Owner acceptance is not independent customer validation.
+Static local-only operation and MIT license preserved. Existing demo URLs and historical Skill Pack documentation are unchanged; physical-phone review remains deferred.
+
 ## Post-Pages Accepted Product Updates - 2026-10-04
 
 Name two projects, generate/export each and compare filenames and report content. Try a blank or unsafe name, confirm the fallback/sanitized filename, and check owner/high-risk safeguards and copy/reset.
