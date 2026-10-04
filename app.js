@@ -57,6 +57,7 @@ const resetButton = document.querySelector("#reset-button");
 const copyButton = document.querySelector("#copy-button");
 const reportOutput = document.querySelector("#report-output");
 const backlogOutput = document.querySelector("#backlog-output");
+const ownerDecisionsOutput = document.querySelector("#owner-decisions-output");
 const statusOutput = document.querySelector("#status-output");
 const decisionCount = document.querySelector("#decision-count");
 const holdCount = document.querySelector("#hold-count");
@@ -201,6 +202,14 @@ function buildOwnerDecisionList(data) {
 function generateReport() {
   const data = getFormData();
   const ownerDecisions = buildOwnerDecisionList(data);
+  // Owner-decision projection; no resolution or authority admission.
+  ownerDecisionsOutput.innerHTML = "";
+  (ownerDecisions.length ? ownerDecisions : ["No outstanding owner decisions declared; this is not proof of approval."]).forEach((decision) => {
+    const li = document.createElement("li");
+    li.textContent = decision;
+    ownerDecisionsOutput.appendChild(li);
+  });
+  // End owner-decision projection.
   const heldOrBlocked = data.gateSelections.filter((gate) => gate.status === "Hold" || gate.status === "Blocked");
   const readiness = getReadiness(data.gateSelections, ownerDecisions);
   const phaseReadiness = getReadiness(data.gateSelections, []);
@@ -330,6 +339,8 @@ function loadSample() {
 }
 
 function resetForm() {
+  ownerDecisionsOutput.innerHTML = "";
+  ownerDecisionsOutput.textContent = "No generated owner-decision review yet.";
   backlogOutput.textContent = "No declared backlog generated yet.";
   reportSnapshot = null;
   ownerReviewConfirmed.checked = false;

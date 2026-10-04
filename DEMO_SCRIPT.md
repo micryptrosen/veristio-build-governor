@@ -1,5 +1,13 @@
 # Demo Script - Build Governor
 
+## Declared owner decisions - Current Public-Safe Update
+
+The complete derived owner-decision list is visible separately from the declared phase backlog. These are entered decisions and safeguards, not resolved decisions, verified approvals or completed verification. Readiness calculations remain unchanged.
+
+App: https://micryptrosen.github.io/veristio-build-governor/
+Use the live app or open index.html locally. Existing video walkthroughs predate this update. Earlier roadmap/demo checkpoints below remain historical. Static local-only behavior; no accounts, backend, persistence or external services added.
+
+
 ## Actionable Review Aids - 2026-10-04
 
 Declared phase work remaining lists every non-Passed phase in canonical order, separately from owner decisions and completed verification. All-Passed is only a declaration, not tool-verified completion. Readiness and owner/high-risk safeguards remain unchanged.
