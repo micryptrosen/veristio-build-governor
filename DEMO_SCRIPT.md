@@ -1,5 +1,12 @@
 # Demo Script - Build Governor
 
+## Sample Replacement Protection - 2026-10-04
+
+Load sample asks before replacing work changed since the initial state, last successful sample load or Reset. Cancel keeps current inputs and generated output; confirm loads the sample. Unchanged sample values load directly. Reset still clears work immediately; no autosave is added.
+Project setup, phases and owner/high-risk confirmations are protected. Confirming a sample still clears confirmations; readiness remains user-declared.
+Walkthrough: load sample, edit, cancel and inspect preserved work, then confirm and Reset. Existing video was not re-recorded.
+Earlier snapshot notes below are historical checkpoints.
+
 ## Current Public-safe Snapshot - 2026-10-04
 
 Generate a project-labelled decision report, inspect outstanding owner decisions and evidence expectations, export current .txt, edit/regenerate, copy and reset. Keep readiness declarations distinct from completed verification.

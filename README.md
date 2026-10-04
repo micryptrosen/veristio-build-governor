@@ -1,5 +1,12 @@
 # Build Governor
 
+## Sample Replacement Protection - 2026-10-04
+
+Load sample asks before replacing work changed since the initial state, last successful sample load or Reset. Cancel keeps current inputs and generated output; confirm loads the sample. Unchanged sample values load directly. Reset still clears work immediately; no autosave is added.
+Project setup, phases and owner/high-risk confirmations are protected. Confirming a sample still clears confirmations; readiness remains user-declared.
+Implemented and owner-accepted. Static local-only operation and MIT remain unchanged; physical-phone review deferred.
+Earlier snapshot notes below are historical checkpoints.
+
 ## Current Public-safe Snapshot - 2026-10-04
 
 Runtime is unchanged in this documentation update. Evidence/check requirements and readiness are user declarations, not completed verification. Owner/high-risk safeguards, project-labelled report filenames and current copy/export guards remain intact.

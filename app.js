@@ -277,7 +277,31 @@ function generateReport() {
   reportSnapshot = { inputs: inputSnapshot(), report };
 }
 
+// Sample replacement protection: compare raw values, not authorship or approval.
+let sampleLoadBaseline;
+function sampleProtectedState(target = false) {
+  return JSON.stringify({
+    fields: Object.keys(fields).map((key) => target
+      ? Array.isArray(sample[key]) ? sample[key].join("\n") : sample[key]
+      : fields[key].value),
+    gates: target ? phases.map((phase) => ({ phase, status: sample.gateStatuses[phase] })) : getGateSelections(),
+    ownerReviewConfirmed: target ? false : ownerReviewConfirmed.checked,
+    highRiskConfirmed: target ? false : highRiskConfirmed.checked
+  });
+}
+function sampleReplacementAllowed() {
+  const current = sampleProtectedState();
+  if (current === sampleLoadBaseline || current === sampleProtectedState(true)) return true;
+  try {
+    return typeof window.confirm === "function" && window.confirm("Replace your edited project setup and phase states with the sample? Confirmations will be cleared. Cancel to keep your work.") === true;
+  } catch {
+    return false;
+  }
+}
+// End sample replacement protection.
+
 function loadSample() {
+  if (!sampleReplacementAllowed()) return;
   ownerReviewConfirmed.checked = false;
   highRiskConfirmed.checked = false;
   fields.projectName.value = sample.projectName;
@@ -291,6 +315,7 @@ function loadSample() {
   setGateSelections(sample.gateStatuses);
   generateReport();
   statusOutput.textContent = "Sample loaded";
+  sampleLoadBaseline = sampleProtectedState();
 }
 
 function resetForm() {
@@ -315,6 +340,7 @@ function resetForm() {
   ownerReadinessOutput.textContent = "Not generated";
   expectationOutput.textContent = "No generated expectation review yet.";
   statusOutput.textContent = "Ready";
+  sampleLoadBaseline = sampleProtectedState();
 }
 
 function selectReportText() {
@@ -367,6 +393,7 @@ async function copyReport() {
 }
 
 renderGateControls();
+sampleLoadBaseline = sampleProtectedState();
 // Scope changes invalidate declarations; refresh a generated report to avoid stale readiness.
 Object.values(fields).forEach((field) => field.addEventListener("input", () => {
   ownerReviewConfirmed.checked = false;
