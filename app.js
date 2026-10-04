@@ -65,6 +65,22 @@ const ownerReadinessOutput = document.querySelector("#owner-readiness-output");
 const expectationOutput = document.querySelector("#expectation-output");
 const ownerReviewConfirmed = document.querySelector("#owner-review-confirmed");
 const highRiskConfirmed = document.querySelector("#high-risk-confirmed");
+let reportSnapshot = null;
+let copyOperation = 0;
+
+function inputSnapshot() {
+  return JSON.stringify({
+    fields: Object.values(fields).map((field) => field.value),
+    gates: getGateSelections(),
+    ownerReviewConfirmed: ownerReviewConfirmed.checked,
+    highRiskConfirmed: highRiskConfirmed.checked
+  });
+}
+
+function reportIsCurrent() {
+  return reportSnapshot && reportSnapshot.inputs === inputSnapshot()
+    && reportSnapshot.report === reportOutput.textContent;
+}
 
 function splitLines(value) {
   return value
@@ -258,6 +274,7 @@ function generateReport() {
   ownerReadinessOutput.textContent = ownerReadiness;
   expectationOutput.textContent = expectationReview.join(" ");
   statusOutput.textContent = "Report generated";
+  reportSnapshot = { inputs: inputSnapshot(), report };
 }
 
 function loadSample() {
@@ -277,6 +294,7 @@ function loadSample() {
 }
 
 function resetForm() {
+  reportSnapshot = null;
   ownerReviewConfirmed.checked = false;
   highRiskConfirmed.checked = false;
   Object.values(fields).forEach((field) => {
@@ -314,12 +332,22 @@ function selectReportText() {
 }
 
 async function copyReport() {
+  const operation = ++copyOperation;
   const report = reportOutput.textContent.trim();
 
   if (!report || report.startsWith("No report yet")) {
     statusOutput.textContent = "Nothing to copy";
     return;
   }
+
+  if (!reportIsCurrent()) {
+    statusOutput.textContent = "Inputs or report changed; generate report before copying";
+    return;
+  }
+
+  const snapshot = reportSnapshot;
+  // An initiated clipboard write cannot be recalled; only current completion UI may update.
+  const canComplete = () => operation === copyOperation && snapshot === reportSnapshot && reportIsCurrent();
 
   if (!navigator.clipboard) {
     statusOutput.textContent = "Select report to copy";
@@ -329,10 +357,12 @@ async function copyReport() {
 
   try {
     await navigator.clipboard.writeText(report);
-    statusOutput.textContent = "Copied";
+    if (canComplete()) statusOutput.textContent = "Copied";
   } catch {
-    statusOutput.textContent = "Copy blocked; report selected";
-    selectReportText();
+    if (canComplete()) {
+      statusOutput.textContent = "Copy blocked; report selected";
+      selectReportText();
+    }
   }
 }
 

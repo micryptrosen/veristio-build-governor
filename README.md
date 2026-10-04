@@ -1,5 +1,13 @@
 # Build Governor
 
+## Accepted Maintenance Prepared Locally - 2026-10-04
+
+Copy requires a report matching the current input and decision/checklist state. Obsolete or overlapping asynchronous clipboard completion cannot claim current success or select a newer report. An initiated OS clipboard write cannot be recalled. Readiness remains user-declared; owner/high-risk safeguards, evidence expectations and current .txt export are unchanged.
+
+This accepted product-home repair is prepared in this local public-safe mirror, not yet pushed. Older dated preparation and publication notes remain historical. Static local-only operation and MIT license are preserved. Owner acceptance is not customer or production validation.
+Existing public demo predates this repair; this update does not claim a new recording or playback check. Devpost submission remains abandoned/held/not performed.
+
+
 ## Current Product Value - 2026-10-03
 
 Export report (.txt) regenerates the report from current form declarations and requests a local UTF-8 download named build-governor-decision-report.txt. It includes owner decisions, closeout checklist, evidence/check expectation sources and user-declared readiness. Export does not run verification or authorize actions. Owner/high-risk safeguards remain; unavailable download APIs direct you to Copy report. A requested download is not a guaranteed disk save.

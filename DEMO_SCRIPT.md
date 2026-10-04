@@ -1,5 +1,13 @@
 # Demo Script - Build Governor
 
+## Accepted Maintenance Prepared Locally - 2026-10-04
+
+Generate a decision report, edit a field or confirmation and attempt copy before regenerating. Regenerate and copy or use selection fallback; export the current .txt checklist and reset. Explain that readiness declarations are not completed verification and clipboard writes already initiated cannot be recalled.
+
+This accepted product-home repair is prepared in this local public-safe mirror, not yet pushed. Older dated preparation and publication notes remain historical. Static local-only operation and MIT license are preserved. Owner acceptance is not customer or production validation.
+Existing public demo predates this repair; this update does not claim a new recording or playback check. Devpost submission remains abandoned/held/not performed.
+
+
 ## Product Value Walkthrough - 2026-10-03
 
 Under three minutes: load sample, inspect owner decisions and checklist, export and open the text download. Change scope and export again, showing unresolved owner/high-risk decisions stay held. Demonstrate copy fallback if export APIs are unavailable.
