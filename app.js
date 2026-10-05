@@ -202,9 +202,10 @@ function buildOwnerDecisionList(data) {
 function generateReport() {
   const data = getFormData();
   const ownerDecisions = buildOwnerDecisionList(data);
+  const decisionAnnotations = ownerDecisions.map((decision, index) => `${index < data.ownerGates.length ? "User-entered owner decision" : "App-derived safeguard"}: ${decision}`);
   // Owner-decision projection; no resolution or authority admission.
   ownerDecisionsOutput.innerHTML = "";
-  (ownerDecisions.length ? ownerDecisions : ["No outstanding owner decisions declared; this is not proof of approval."]).forEach((decision) => {
+  (decisionAnnotations.length ? decisionAnnotations : ["No outstanding owner decisions declared; this is not proof of approval."]).forEach((decision) => {
     const li = document.createElement("li");
     li.textContent = decision;
     ownerDecisionsOutput.appendChild(li);
@@ -250,7 +251,7 @@ function generateReport() {
     ...data.gateSelections.map((gate) => `- ${gate.phase}: ${gate.status}`),
     "",
     "Owner-decision list:",
-    ...bulletList(decisions),
+    ...bulletList(decisionAnnotations.length ? decisionAnnotations : decisions),
     "",
     "Declared phase work remaining (not completed verification):",
     ...bulletList(backlog),

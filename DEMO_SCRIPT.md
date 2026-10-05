@@ -1,5 +1,13 @@
 # Demo Script - Build Governor
 
+## Saved Handoff Clarity - Current Public-Safe Update
+
+Owner-decision rows now identify User-entered owner decision versus App-derived safeguard on screen and in copied/downloaded reports. Labels explain list construction, not verified approval. Readiness, values/order/duplicates/counts and confirmations are unchanged.
+
+App: https://micryptrosen.github.io/veristio-build-governor/
+Use the live app or open index.html locally. Existing videos predate this update; earlier dated preparation/roadmap notes below are historical. Static local-only architecture; no new accounts, network dependencies or persistence.
+
+
 ## Declared owner decisions - Current Public-Safe Update
 
 The complete derived owner-decision list is visible separately from the declared phase backlog. These are entered decisions and safeguards, not resolved decisions, verified approvals or completed verification. Readiness calculations remain unchanged.
